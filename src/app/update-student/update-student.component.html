@@ -1,0 +1,177 @@
+<div class="container mt-2 mb-3 float-center ">
+    <div class="d-flex justify-content-center h-100">
+        <div class="card w-50">
+            <div class="card-header">
+                <h1 class="text-center"><b>Registeration</b></h1>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="signupForm">
+                    <div class="row">
+                        <div class="col">
+                            <div class=" mb-3 form-group  required">
+                                <label class="form-label required" data-toggle="tooltip" data-bs-placement="bottom"
+                                    title="First Name"> First Name</label>
+                                <input type="text" formControlName="firstname" class="form-control" appInputfield />
+                            </div>
+                            <small
+                                *ngIf="(signupForm.controls['firstname'].dirty|| signupForm.controls['firstname'].touched)&& signupForm.hasError('required','firstname')"
+                                class=" form-text text-danger">*First Name is required
+                            </small>
+                            <small
+                                *ngIf="signupForm.controls['firstname'].dirty&& signupForm.hasError('minlength','firstname')"
+                                class=" form-text text-danger">*First Name with atleast 2 character is required
+                            </small>
+                            <small
+                                *ngIf="signupForm.controls['firstname'].dirty && signupForm.hasError('pattern','firstname')"
+                                class=" form-text text-danger">*First Name should contain only character
+                            </small>
+                        </div>
+                        <div class="col">
+                            <div class=" mb-3 form-group required">
+                                <label class="form-label" data-toggle="tooltip" data-bs-placement="bottom"
+                                    title="Last Name"> Last Name</label>
+                                <input type="text" appInputfield formControlName="lastname" class="form-control" />
+                                <!-- [ngClass]="{'is-invalid':submitted && signupForm.controls['lastname'].errors}" /> -->
+                            </div>
+                            <small
+                                *ngIf="(signupForm.controls['lastname'].dirty||signupForm.controls['lastname'].touched) && signupForm.hasError('required','lastname')"
+                                class=" form-text text-danger">*Last Name is required
+                            </small>
+                            <small
+                                *ngIf="signupForm.controls['lastname'].dirty && signupForm.hasError('minlength','lastname')"
+                                class=" form-texttext-danger">*Last Name with atleast 2 character is required
+                            </small>
+                            <small
+                                *ngIf="signupForm.controls['lastname'].dirty&& signupForm.hasError('pattern','lastname')"
+                                class=" form-text text-danger">*Last Name should contain only character
+                            </small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3 form-group required">
+                            <label class="form-label" data-toggle="tooltip" data-bs-placement="bottom"
+                                title="Birth Date" for="birthdate" class="form-label">
+                                Birthday
+                            </label>
+                            <input type="date" appInputfield class="form-control" formControlName="birthdate" />
+                            <!-- [ngClass]="{'is-invalid':submitted && signupForm.controls['birthdate'].errors}"> -->
+                            <!-- <small
+                                *ngIf="(signupForm.controls['birthdate'].dirty||signupForm.controls['birthdate'].touched)&& signupForm.hasError('required','birthdate')"
+                                class=" form-text text-danger">*Birth date is required
+                            </small> -->
+                        </div>
+                        <div class="col-md-6 mb-3 form-group required">
+                            <div class="form-label m-1 " data-toggle="tooltip" data-bs-placement="bottom"
+                                title="Gender"> Gender </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" value="m" id="male"
+                                    formControlName="gender">
+                                <label class="form-check-label" for="male">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" value="f" id="female"
+                                    formControlName="gender">
+                                <label class="form-check-label" for="female">Female</label>
+                            </div>
+                            <div *ngIf="(signupForm.controls['gender'].dirty||signupForm.controls['gender'].touched)&& signupForm.hasError('required','gender')"
+                                class=" form-text text-danger">*Gender is required
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3form-group required">
+                                <label class="form-label" data- bs-toggle="tooltip" data-bs-placement="bottom"
+                                    title="email"> email
+                                </label>
+                                <input type="email" appInputfield formControlName="email" class="form-control" />
+                                <!-- [ngClass]="{'is-invalid':submitted && signupForm.controls['email'].errors}" /> -->
+                                <small
+                                    *ngIf="(signupForm.controls['email'].dirty ||signupForm.controls['email'].touched)&& signupForm.hasError('required','email')"
+                                    class=" form-text text-danger">*email is required
+                                </small>
+                                <small
+                                    *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('email','email')"
+                                    class=" form-text text-danger">*email is Invalid
+                                </small>
+                            </div>
+                            <div class="col-md-6 mb-3 form-group required">
+                                <label for="mobile" class="form-label" data-toggle="tooltip" data-bs-placement="bottom"
+                                    title="Phone no"> Phone
+                                    Number
+                                </label>
+                                <input type="text" appInputfield class="form-control" id="mobile"
+                                    formControlName="mobile" />
+                                <!-- [ngClass]="{'is-invalid':submitted && signupForm.controls['mobile'].errors}" /> -->
+                                <small
+                                    *ngIf="(signupForm.controls['mobile'].dirty||signupForm.controls['mobile'].touched) && signupForm.hasError('required','mobile')"
+                                    class=" form-text text-danger">*Mobile is required
+                                </small>
+                                <small
+                                    *ngIf="signupForm.controls['mobile'].dirty && signupForm.hasError('maxlength','mobile')"
+                                    class=" form-text text-danger">* Mobile number should be 10 digits
+                                </small>
+                                <small
+                                    *ngIf="signupForm.controls['mobile'].dirty && signupForm.hasError('pattern','mobile')"
+                                    class=" form-text text-danger"> *Must have only digits
+                                </small>
+                            </div>
+                        </div>
+                        <label>
+                            <h2><b>Subjects:</b> </h2>
+                        </label>
+                        <div class="row">
+                            <div class="col mb-3 form-group required">
+                                <label class="form-label required" data-toggle="tooltip" data-bs-placement="bottom"
+                                    title="chemistry">chemistry</label>
+                                <input type="number" formControlName="chemistry" class="form-control" appInputfield />
+                                <!-- [ngClass]="{'is-invalid':submitted && signupForm.controls['chemistry'].errors}" /> -->
+                                <small
+                                    *ngIf="(signupForm.controls['chemistry'].dirty|| signupForm.controls['chemistry'].touched)&& signupForm.hasError('required','chemistry')"
+                                    class=" form-text text-danger">*Mark is required
+                                </small>
+                            </div>
+                            <div class="col mb-3 form-group required">
+                                <label class="form-label required" data-toggle="tooltip" data-bs-placement="bottom"
+                                    title="Mathematics">Mathematics</label>
+                                <input type="number" formControlName="maths" class="form-control" appInputfield/>
+                                    <!-- [ngClass]="{'is-invalid':submitted && signupForm.controls['maths'].errors}" /> -->
+                                <small
+                                    *ngIf="(signupForm.controls['maths'].dirty|| signupForm.controls['maths'].touched)&& signupForm.hasError('required','maths')"
+                                    class=" form-text text-danger">*Mark is required
+                                </small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3 form-group required">
+                                <label class="form-label required" data-toggle="tooltip" data-bs-placement="bottom"
+                                    title="OperatingSystem">Operating System</label>
+                                <input type="number" formControlName="operatingsystem" class="form-control"
+                                    appInputfield/>
+                                    <!-- [ngClass]="{'is-invalid':submitted && signupForm.controls['operatingsystem'].errors}" /> -->
+                                <small
+                                    *ngIf="(signupForm.controls['operatingsystem'].dirty|| signupForm.controls['operatingsystem'].touched)&& signupForm.hasError('required','operatingsystem')"
+                                    class=" form-text text-danger">*Mark is required
+                                </small>
+                            </div>
+                            <div class="col  mb-3 form-group required">
+                                <label class="form-label required" data-toggle="tooltip" data-bs-placement="bottom"
+                                    title="MicroProcessor">MicroProcessor</label>
+                                <input type="number" formControlName="microprocessor" class="form-control" appInputfield/>
+                                    <!-- [ngClass]="{'is-invalid':submitted && signupForm.controls['microprocessor'].errors}" /> -->
+                                <small
+                                    *ngIf="(signupForm.controls['microprocessor'].dirty|| signupForm.controls['microprocessor'].touched)&& signupForm.hasError('required','microprocessor')"
+                                    class=" form-text text-danger">*Mark is required
+                                </small>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-success" (click)="updateUser()" type="submit">Update</button>
+                            &nbsp;
+                            <button   type="submit" class="btn  btn-primary float-center login_btn "
+                (click)="activateRegisterDetails()">Back</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

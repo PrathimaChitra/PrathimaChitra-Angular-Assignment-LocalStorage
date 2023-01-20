@@ -1,0 +1,38 @@
+<body>
+    <div class="containerfull">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:deepskyblue">
+            <div class="collapse navbar-collapse">
+                <ul class="nav nav-pills nav-justified">
+                    <li class="nav-item">
+                        <a class="navbar-brand" routerLinkActive="active" routerLink="/details">StudentList</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="navbar-brand" routerLinkActive="active" routerLink="/register">Add Student</a>
+                    </li>
+                    <li class="nav-item left">
+                        <button (click)="showNotification()" class="btn btn-link navbar-brand"><i
+                                class="fa fa-bell" style="width:90px;"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="panel panel-primary mt-2  " *ngIf="displayPanel" (click)= "outsidePanel()">
+            <div class="panel-heading mb-1">
+                <h3 class="panel-title mb-1 p-2"><strong>Notifications</strong>
+                    <button (click)="closeButton()" class="btn btn-link space"><i class="fa fa-close"
+                            style="color: black;"></i></button>
+                </h3>
+            </div>
+            <hr/>
+            <li class=" mt-3" *ngFor="let message of notify">
+               
+               <button class="btn btn-link" [routerLink]="['/updateStudent',message.userId]" style="text-decoration:none; color:black;" > {{message.firstname}}{{message.lastname}} Successfully registered </button>
+                <hr/>
+            </li>
+        </div>
+        <lib-ng-toast></lib-ng-toast>
+        <ng-confirm></ng-confirm>
+        <router-outlet></router-outlet>
+    </div>
+</body>

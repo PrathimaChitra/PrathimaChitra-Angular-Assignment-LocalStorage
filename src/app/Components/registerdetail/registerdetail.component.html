@@ -1,0 +1,88 @@
+<div class="container mt-3">
+  <!-- <div *ngIf="details"> -->
+  <h1 class="text-center col-md-12"><b> Student Registeration Details</b></h1>
+  <input type="text" [(ngModel)]="searchText.firstname" placeholder="Search by name.."
+    style="width:150px; height:30px; float:left; margin-left:10px; margin-bottom:10px; margin-top:10px;">
+  <table class="table table-striped table-hover table-content">
+    <thead>
+      <th style="width:40px;"></th>
+      <th style="width:30px;">Id</th>
+
+      <th [appSorting]="dataArray" data-order="desc" data-name="firstname" style="width:120px;">FirstName <i
+          class="fa fa-sort"></i></th>
+      <th [appSorting]="dataArray" data-order="desc" data-name="lastname" style="width:120px;">LastName <i
+          class="fa fa-sort"></i></th>
+      <th [appSorting]="dataArray" data-order="desc" data-name="birthdate" style="width:130px;">Birthday <i
+          class="fa fa-sort"></i></th>
+      <th [appSorting]="dataArray" data-order="desc" data-name="gender" style="width:100px;">Gender <i
+          class="fa fa-sort"></i></th>
+      <th [appSorting]="dataArray" data-order="desc" data-name="email" style="width:100px;">Email <i
+          class="fa fa-sort"></i></th>
+      <th [appSorting]="dataArray" data-order="desc" data-name="mobile" style="width:100px;">Phone Number <i
+          class="fa fa-sort"></i></th>
+      <th [appSorting]="dataArray" data-order="desc" data-name="chemistry" style="width:120px;">Chemistry <i
+          class="fa fa-sort"></i></th>
+      <th [appSorting]="dataArray" data-order="desc" data-name="maths" style="width:130px;">Mathematics <i
+          class="fa fa-sort"></i></th>
+      <th [appSorting]="dataArray" data-order="desc" data-name="operatingsystem" style="width:120px;">Operting System
+        <i class="fa fa-sort"></i>
+      </th>
+      <th [appSorting]="dataArray" data-order="desc" data-name="microprocessor" style="width:120px;">Micro Processor
+        <i class="fa fa-sort"></i>
+      </th>
+      <th style="width:120px;">Action</th>
+    </thead>
+    <tbody class="text-align-center">
+      <tr *ngFor="let student of products|filterBy: searchText;let i=index;">
+        <td>
+          <input type="radio" class="form-check-input" value="{{student}}" name="student"
+            (click)="selectStudent(student)">
+        </td>
+        <td style="width:50px;">{{i+1}}</td>
+        <td c>{{student.firstname}}</td>
+        <td appEllipse>{{student.lastname}}</td>
+        <td appEllipse>{{student.birthdate}}</td>
+        <td appEllipse>{{student.gender}}</td>
+        <td appEllipse>{{student.email}}</td>
+        <td appEllipse>{{student.mobile}}</td>
+        <td appEllipse>{{student.chemistry}}</td>
+        <td appEllipse>{{student.maths}}</td>
+        <td appEllipse>{{student.operatingsystem}}</td>
+        <td appEllipse>{{student.microprocessor}}</td>
+        <td style="width:500px;">
+          <button type="button" [routerLink]="['/updateStudent',student.userId]" class="btn btn-secondary"><i
+              class="fa fa-pencil"></i>
+          </button>
+          &nbsp;&nbsp;
+          <button type="button" (click)="onDelete(i)" class="btn btn-danger"><i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+  </table>
+  <div class="text-center float-center mb-2">
+    <button type="submit" (click)="displayGraph()" class="btn btn-secondary" value="submit">Display Chart</button>
+  </div>
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-center">
+      <div class="btn-group float-right ">
+        <button class="btn btn-sm btn-outline-primary" (click)="firstPage()" [disabled]="(selectedPage == 1)">
+          << </button>
+            <button class="btn btn-sm btn-outline-primary" (click)="previousPage(selectedPage)"
+              [disabled]="(selectedPage == 1)"><i>
+                < </i>Prev </button>
+            <button class="btn btn-sm btn-outline-primary active" *ngFor="let page of pageNumber"
+              (click)="changePage(page)" [class.active]="page == selectedPage">{{page}}</button>
+            <button class="btn btn-sm btn-outline-primary" (click)="nextPage(selectedPage)"
+              [disabled]="(selectedPage == pageNumber.length)">Next></button>
+            <button class="btn btn-sm btn-outline-primary" (click)="lastPage()"
+              [disabled]="(selectedPage == pageNumber.length)">>></button>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <app-mark-graphs *ngIf="isBarGraphDisplay" [barGraphData]="studentMark" class="bargraph"></app-mark-graphs>
+    <app-pie-chart *ngIf="isPieChartDisplay" [pieChart]="studentMark" class="piechart"></app-pie-chart>
+    <br>
+    <app-line-graph *ngIf="isLineGraphDisplay" [lineGraphData]="studentMark" class="linebargraph"></app-line-graph>
+  </div>
+</div>

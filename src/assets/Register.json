@@ -1,0 +1,58 @@
+
+[
+    {
+        "ID":"FirstName",
+        "Label":"First Name",
+        "Type":"input",
+        "Value":"",
+        "Required":true,
+       
+        "Length":"MaxLength(20)"
+    },
+
+    {
+        "ID":"LastName",
+        "Label":"Last Name",
+        "Type":"input",
+        "Value":"",
+        "Required":true
+    },
+    {
+        "ID":"DateofBirth",
+        "Label":"DateOf Birth",
+        "Type":"date",
+        "Value":"",
+        "Required":true
+    
+    },
+    {
+        "ID":"Email",
+        "Label":"Email",
+        "Type":"email",
+        "Value":"",
+        "Required":true
+    },
+    {
+        "ID":"PhoneNumber",
+        "Label":"Phone Number",
+        "Type":"input",
+        "Value":"",
+        "Required":true
+    },
+    {
+        "ID":"Gender",
+        "Label":"Gender",
+        "Type":"radio",
+        "Value":"Male, Female"
+       
+    },
+    {
+        "ID":"Subject",
+        "Label":"Subject",
+        "Type":"select",
+        "Value":"Java,Html, Css, Angular"
+        
+    }
+
+]
+

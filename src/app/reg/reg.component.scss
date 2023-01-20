@@ -1,0 +1,17 @@
+.form-group.required .form-label:after {
+  content: "*";
+  color: red;
+}
+
+.tooltip {
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  position: absolute;
+}
+
+.active {
+  display: block;
+}
+.container{
+  position: fixed;
+}

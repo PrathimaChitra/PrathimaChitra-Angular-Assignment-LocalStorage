@@ -1,0 +1,36 @@
+h2 {
+  text-align: center;
+}
+th {
+  width: 110px;
+}
+td {
+  width: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+table {
+
+  table-layout: fixed;
+  width: 900px;
+}
+.bargraph {
+  width: 50%;
+  height: 280px;
+  position: relative;
+}
+.piechart {
+  width: 50%;
+  height: 350px;
+  position: relative;
+  margin-top: 5px;
+
+}
+.linebargraph{
+  width: 50%;
+  height: 280px;
+  position: relative;
+}
+
+

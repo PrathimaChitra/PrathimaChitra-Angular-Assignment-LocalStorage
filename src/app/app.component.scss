@@ -1,0 +1,38 @@
+body{
+    height: 145vh;
+    display: flex;
+    position: relative;
+    background-image: url("https://th.bing.com/th/id/R.249f4a845910f4e8afeea228cc16da0c?rik=1DbcP7KxG6LMkw&riu=http%3a%2f%2fwallpapercave.com%2fwp%2foNHaish.jpg&ehk=DhPKkuCLKyGwSp3gDmaBL8aBziIcrz3lnYauLdnT0Xc%3d&risl=&pid=ImgRaw&r=0");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;     
+
+}
+.left{
+    padding-left: 1085px;
+}
+.panel{
+    position: absolute;
+    width:fit-content;
+    height:200px;
+    background-color :white;
+    float:right;
+    margin-left: 1100px;
+    box-shadow: 10px 10px 50px 30px lightgrey;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow-y: auto;
+   border-style:solid;
+
+}
+.space{
+float:right;
+}
+nav{
+    padding-left: 15px;
+}
+
+
+

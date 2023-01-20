@@ -1,0 +1,107 @@
+
+
+<div class="col-md-12">{{registerationForm.value | json}}</div> 
+<div class="container mt-5 d-flex justify-content-center  h-100">
+  <div class="card w-50">
+
+    <div class="card-header">
+        <h1 class="text-center"><b>Registeration</b></h1>
+    </div>
+    <div class="card-body">
+    <form id="form" [formGroup]="registerationForm" (ngSubmit)="onSignUp()">
+   
+      <div class="mb-3" *ngFor="let input of dynamicFormArray" >
+        <div [ngSwitch]="input.Type"> <!-- input,date,select,email,radio -->
+            <div *ngSwitchCase="'input'">
+                  <div class="col-md-4">
+                      <label  class="form-label required">{{input.Label}}</label>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text"[formControlName]="input.ID" class="form-control">
+                   <div *ngIf="registerationForm.get(input.ID)?.dirty||registerationForm.get(input.ID)?.touched">
+                    <small  class=" form-text text-danger"*ngIf="!registerationForm.get(input.ID)?.valid">
+                      {{input.Label}} is required.
+                    </small>
+                    <!-- <small  class=" form-text text-danger"*ngIf="!registerationForm.get[input.ID]?.maxlength">
+                        {{input.Label}} is required.
+                      </small> -->
+                  </div>
+                  </div>
+            </div>
+
+            <div *ngSwitchCase="'date'">
+              <div class="col-md-4">
+                  <label form-label required>{{input.Label}}</label>
+              </div>
+              <div class="col-md-6">
+                <input type="date" [formControlName]="input.ID" class="form-control">
+                <div *ngIf="registerationForm.get(input.ID)?.dirty||registerationForm.get(input.ID)?.touched">
+                  <small  class=" form-text text-danger"*ngIf="!registerationForm.get(input.ID)?.valid">
+                    {{input.Label}} is required.
+                  </small>
+                </div>
+              </div>
+            </div>
+
+              <div *ngSwitchCase="'select'">
+                <div class="col-md-4">
+                <label form-label required>{{input.Label}}</label>
+                </div>
+                <div class="col-md-6">
+            <select class="form-control">
+              <option value="-1">Select</option>
+              <option *ngFor="let value of input.Value.split(',')" value="{{value}}">{{value}}</option>
+            </select>
+            <!-- <div *ngIf="registerationForm.get(input.ID)?.dirty||registerationForm.get(input.ID)?.touched">
+              <small  class=" form-text text-danger"*ngIf="!registerationForm.get(input.ID)?.valid">
+                {{input.Label}} is required.
+              </small>
+            </div> -->
+            </div>
+            </div>
+
+            <div *ngSwitchCase="'email'">
+              <div class="col-md-4">
+              <label form-label required>{{input.Label}}</label>
+              </div>
+              <div class="col-md-6">
+          <input type="email"  [formControlName]="input.ID"class="form-control">
+          <div *ngIf="registerationForm.get(input.ID)?.dirty||registerationForm.get(input.ID)?.touched">
+            <small  class=" form-text text-danger" *ngIf="!registerationForm.get(input.ID)?.valid">
+              {{input.Label}} is required.
+            </small>
+          </div>  
+        </div>
+            </div>
+
+           <div *ngSwitchCase="'radio'">
+            <div class="col-md-4">
+              <label form-label required>{{input.Label}}</label>
+            </div>
+            <div class="col-md-6">
+              <label class="radio" *ngFor="let value of input.Value.split(',')">
+                <input type="radio" name={{input.ID}}  value="{{value}}">
+                {{value}}
+              </label>
+              <!-- <div *ngIf="registerationForm.get(input.ID)?.dirty||registerationForm.get(input.ID)?.touched">
+                <small  class=" form-text text-danger"*ngIf="!registerationForm.get(input.ID)?.valid">
+                  {{input.Label}} is required.
+                </small>
+              </div> -->
+            </div>
+          </div> 
+          <!-- <div *ngSwitchCase="'button'">
+            <div class="col-md-12 btn btn-primary" type="button" (click)="onSignUp()" >{{input.Value}}</div>
+          </div> -->
+ </div>
+ </div>
+
+ <div class="form-group">
+  <button type="submit"class="btn  btn-primary float-center login_btn" > Register</button>
+</div>
+
+  </form>
+
+</div>
+</div> 
+
